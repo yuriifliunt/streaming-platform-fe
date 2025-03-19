@@ -1,41 +1,56 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F8FAFC;
-  --foreground: #111827;
+  --light: #F8FAFC;
+  --dark: #111827;
   --secondary: #ba0021;
   --accent: #facc15;
   --font-sans: "Lato", sans-serif;
+
+  --lightShadow: rgba(248, 250, 252, 0.5);
+  --darkShadow: rgba(17, 24, 39, 0.5);
+  --redShadow: rgba(186, 0, 33, 0.5);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #111827;
-    --foreground: #F8FAFC;
-  }
+.dark {
+  --dark: #F8FAFC;
+  --light: #111827;
+
+  --darkShadow: rgba(248, 250, 252, 0.25);
+  --lightShadow: rgba(17, 24, 39, 0.5);
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
   font-family: var(--font-sans);
   @apply antialiased;
 }
 
-.bg-primary {
-  background-color: var(--background);
+.shadow-light {
+  box-shadow: 1px 1px 20px var(--lightShadow);
 }
 
-.text-primary {
-  color: var(--foreground);
+.shadow-accent {
+  box-shadow: 1px 1px 8px var(--accent);
 }
 
-.bg-secondary {
-  background-color: var(--secondary);
+.shadow-dark {
+  box-shadow: 1px 1px 8px var(--darkShadow);
 }
 
-.text-secondary {
-  color: var(--secondary);
+.bg-dark {
+  background-color: var(--dark);
+}
+
+.text-dark {
+  color: var(--dark);
+}
+
+.bg-light {
+  background-color: var(--light);
+}
+
+.text-light {
+  color: var(--light);
 }
 
 .bg-accent {
@@ -46,13 +61,10 @@ body {
   color: var(--accent);
 }
 
-.dark {
-  --background: #111827;
-  --foreground: #F8FAFC;
+.bg-secondary {
+  background-color: var(--secondary);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: "Lato", sans-serif;
+.text-secondary {
+  color: var(--secondary);
 }

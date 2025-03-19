@@ -2,8 +2,9 @@
 import React from 'react';
 import initTranslations from '../i18n';
 import TranslationsProvider from '../../components/TranslationsProvider';
+import Header from '@/components/global/Header';
 
-const i18nNamespaces = ["home"];
+const i18nNamespaces = ["home", "default"];
 
 type TProps = {
   params: {
@@ -16,9 +17,9 @@ export default async function Home({ params: { locale } }: TProps) {
 
   return (
     <TranslationsProvider resources={resources} locale={locale} namespaces={i18nNamespaces}>
+      <Header />
       <div>
-        hello
-        <p>{t('welcome')}</p>
+        <p className='text-dark'>{t('welcome')}</p>
       </div>
     </TranslationsProvider>
   )

@@ -1,12 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        secondary: "#BA0021",
-        accent: "#FACC15",
-        light: "#F8FAFC",
-        dark: "#111827",
+        secondary: "var(--secondary)",
+        accent: "var(--accent)",
+        light: "var(--light)",
+        dark: "var(--dark)",
+        lightShadow: "var(--lightShadow)",
+        darkShadow: "var(--darkShadow)",
+        redShadow: "var(--redShadow)",
       },
       fontFamily: {
         sans: ["Lato", "sans-serif"],

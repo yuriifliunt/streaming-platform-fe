@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={lato.variable}
+        className={`${lato.variable} bg-light dark:bg-dark`}
       >
         {children}
       </body>
