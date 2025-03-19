@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F8FAFC;
+  --foreground: #111827;
+  --secondary: #ba0021;
+  --accent: #facc15;
+  --font-sans: "Lato", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #111827;
+    --foreground: #F8FAFC;
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  @apply antialiased;
+}
+
+.bg-primary {
+  background-color: var(--background);
+}
+
+.text-primary {
+  color: var(--foreground);
+}
+
+.bg-secondary {
+  background-color: var(--secondary);
+}
+
+.text-secondary {
+  color: var(--secondary);
+}
+
+.bg-accent {
+  background-color: var(--accent);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+.dark {
+  --background: #111827;
+  --foreground: #F8FAFC;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Lato", sans-serif;
+}
