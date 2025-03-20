@@ -21,8 +21,10 @@ export const metadata: Metadata = {
 };
 
 async function getTheme() {
+
   const cookieStore = await cookies();
   const theme = cookieStore.get("theme");
+
   return theme;
 }
 
