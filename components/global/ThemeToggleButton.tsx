@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { useConfigStore } from '@/store/configStore';
 import { DARK_THEME, LIGHT_THEME } from '@/constants';
 import { useTabascoAnimationStore } from '@/store/tabascoAnimationStore';
+import { create } from '@/app/actions';
 
 export const ThemeToggleButton = () => {
   const iconRef = useRef(null);
@@ -14,13 +15,13 @@ export const ThemeToggleButton = () => {
   const { triggerAnimation } = useTabascoAnimationStore();
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    changeTheme();
+    const isDark = document.documentElement.classList.contains(DARK_THEME);
+    changeTheme(isDark ? DARK_THEME : LIGHT_THEME);
 
-    if (savedTheme === DARK_THEME) {
-      document.documentElement.classList.add(DARK_THEME);
-    } else {
-      document.documentElement.classList.remove(DARK_THEME);
+    if (isDark) {
+      gsap.to(iconRef.current, {
+        x: 40,
+      });
     }
   }, [changeTheme]);
 
@@ -40,11 +41,13 @@ export const ThemeToggleButton = () => {
     });
   };
 
-  const toggleTheme = () => {
+  const toggleTheme = async () => {
     const newMode = theme !== DARK_THEME;
-    changeTheme();
+    const newTheme = newMode ? DARK_THEME : LIGHT_THEME;
+
+    changeTheme(newTheme);
     document.documentElement.classList.toggle(DARK_THEME, newMode);
-    localStorage.setItem('theme', newMode ? DARK_THEME : LIGHT_THEME);
+    create(newTheme);
 
     gsap.to(iconRef.current, {
       x: newMode ? 40 : 0,
@@ -53,7 +56,6 @@ export const ThemeToggleButton = () => {
     });
 
     animateBorder();
-    
     triggerAnimation();
   };
 

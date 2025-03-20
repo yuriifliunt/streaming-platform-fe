@@ -1,30 +1,29 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import TabascoAnimation from './Tabasco';
 import { LanguageButton } from './LanguageButton';
 import { ThemeToggleButton } from './ThemeToggleButton';
 
 const Header = () => {
   const [isVisible, setIsVisible] = useState(true);
-  let lastScrollY = 0;
+  const lastScrollY = useRef(0);
 
-  const handleScroll = () => {
-    if (window.scrollY > lastScrollY) {
+  const handleScroll = useCallback(() => {
+    if (window.scrollY > lastScrollY.current) {
       setIsVisible(false);
     } else {
       setIsVisible(true);
     }
-    lastScrollY = window.scrollY;
-  };
+    lastScrollY.current = window.scrollY;
+  }, []);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [handleScroll]);
 
   return (
     <header

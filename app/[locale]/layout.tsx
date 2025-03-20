@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "../../styles/globals.css";
+import { cookies } from "next/headers";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -16,13 +17,22 @@ export const metadata: Metadata = {
   description: "Created by [T] corp",
 };
 
-export default function RootLayout({
+async function getTheme() {
+  const cookieStore = await cookies()
+  const theme = cookieStore.get('theme')
+
+  return theme;
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const theme = await getTheme();
+
   return (
-    <html lang="en">
+    <html lang="en" className={theme?.value}>
       <body
         className={`${lato.variable} bg-light dark:bg-dark`}
       >
