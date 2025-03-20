@@ -34,12 +34,12 @@ export const LanguageButton = () => {
 
   return (
     <select
-      className="text-dark bg-light border-2 border-dark rounded-lg py-2 px-4 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50 hover:bg-accent hover:text-dark active:bg-secondary active:text-white cursor-pointer transition-all duration-300 ease-in-out"
+      className="text-dark bg-light border-none shadow-dark w-20 h-10 py-1 px-4 rounded-full text-sm font-light cursor-pointer"
       onChange={handleChange}
       value={currentLocale}
     >
-      <option value="en">English</option>
-      <option value="uk">Українська</option>
+      <option className='font-light' value="en">EN</option>
+      <option value="uk">Укр</option>
     </select>
   );
 };
